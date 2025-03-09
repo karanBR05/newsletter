@@ -61,7 +61,7 @@
 
 
 -->
-
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,5 +123,71 @@
         }
     </script>
 </body>
+</html>  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Subscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .newsletter {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="newsletter">
+        <h2>Subscribe to our Newsletter</h2>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button onclick="subscribe()">Subscribe</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function subscribe() {
+            let email = document.getElementById('email').value.trim();
+            let messageBox = document.getElementById('message');
+
+            if (!email) {
+                messageBox.innerText = "Please enter an email.";
+                return;
+            }
+
+            fetch('https://script.google.com/macros/s/AKfycbwPkfE4so30mTKf7qBeCnlgufLnSA8CbgWE9qz4x_ascv4JqQTftsuwABTQCcvD36XHzg/exec', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                messageBox.innerText = data.message;
+                if (data.message.includes("successful")) {
+                    document.getElementById('email').value = '';
+                }
+            })
+            .catch(error => {
+                messageBox.innerText = "Something went wrong. Please try again.";
+            });
+        }
+    </script>
+</body>
 </html>
+
 
