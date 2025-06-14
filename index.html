@@ -100,14 +100,42 @@
                 font-size: 14px;
             }
         }
+
+         marquee {
+      position: absolute;
+      width: 100%;
+      color: #79f60c;
+      font-size: 16px;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 5px 0;
+      z-index: 1;
+    }
+
+    .marquee-top {
+      top: 0;
+    }
+
+    .marquee-bottom {
+      bottom: 0;
+    }
     </style>
 </head>
 <body>
+ <!-- Top marquee (Right to Left) -->
+  <marquee class="marquee-top" behavior="scroll" direction="left">
+    ⚠️ Thanks for visiting our website. We are currently under maintenance 
+  </marquee>
+    
     <div class="container">
           <img src="logo12.jpg" alt="RIDDDHI STACK Logo" class="logo">
         <div class="gear">⚙️</div>
         <h1 class="fade-in-text"> Website is Under Maintenance </h1>
         <p class="fade-in-text">We are currently working on some improvements. Please check back soon!</p>
     </div>
+
+     <!-- Bottom marquee (Left to Right) -->
+  <marquee class="marquee-bottom" behavior="scroll" direction="right">
+    Please check back soon!
+  </marquee>
 </body>
 </html>
